@@ -10,17 +10,25 @@ This is a portfolio analysis of the public Cookie Cats experiment (Tactile Enter
 
 Primary metric is pre-specified as 7-day retention. 1-day retention and rounds played are secondary and do not decide launch.
 
-## Data
+## Data source（公开数据说明）
 
-| Field | Meaning |
+`cookie_cats.csv` is a **public dataset**, not internal company data.
+
+- Source: [Mobile Games A/B Testing - Cookie Cats (Kaggle)](https://www.kaggle.com/datasets/mursideyarkin/mobile-games-ab-testing-cookie-cats)
+- Game: Cookie Cats by Tactile Entertainment. Players who installed during the experiment were randomly assigned to `gate_30` or `gate_40` (the first gate at **level** 30 vs 40). A gate makes the player wait or make an in-app purchase.
+- This repo is an independent portfolio analysis. I do not own the dataset or the game; see the Kaggle page for license and terms.
+
+## Data dictionary
+
+| Field | Meaning (from the dataset docs) |
 | --- | --- |
-| `userid` | User id (assignment unit) |
-| `version` | `gate_30` (control) or `gate_40` (treatment) |
-| `sum_gamerounds` | Rounds played in the 14 days after install |
-| `retention_1` | Came back 1 day after install |
-| `retention_7` | Came back 7 days after install |
+| `userid` | Unique player id |
+| `version` | `gate_30` = control (gate at level 30); `gate_40` = treatment (gate moved to level 40) |
+| `sum_gamerounds` | Game **rounds** played in the first **14 days** after install (not the level reached) |
+| `retention_1` | Came back **and played** 1 day after install |
+| `retention_7` | Came back **and played** 7 days after install |
 
-File: [`data/cookie_cats.csv`](data/cookie_cats.csv) (90,189 rows).
+File: [`data/cookie_cats.csv`](data/cookie_cats.csv) (90,189 rows before dropping one extreme outlier).
 
 ## How to run
 
